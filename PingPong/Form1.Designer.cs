@@ -40,6 +40,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsBallInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbCountdown = new System.Windows.Forms.Label();
+            this.cbStereo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -135,11 +136,22 @@
             this.lbCountdown.Text = "3";
             this.lbCountdown.Visible = false;
             // 
+            // cbStereo
+            // 
+            this.cbStereo.AutoSize = true;
+            this.cbStereo.Location = new System.Drawing.Point(763, 856);
+            this.cbStereo.Name = "cbStereo";
+            this.cbStereo.Size = new System.Drawing.Size(118, 17);
+            this.cbStereo.TabIndex = 8;
+            this.cbStereo.Text = "Stereoscopic Mode";
+            this.cbStereo.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 872);
+            this.Controls.Add(this.cbStereo);
             this.Controls.Add(this.lbCountdown);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.paddlePower);
@@ -170,6 +182,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsBallInfo;
         private System.Windows.Forms.Label lbCountdown;
+        private System.Windows.Forms.CheckBox cbStereo;
     }
 }
 

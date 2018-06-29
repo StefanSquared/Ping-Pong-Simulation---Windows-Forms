@@ -73,7 +73,7 @@ namespace PingPong
             ourPaddle.Draw(g);
 
             if (childBall.zIndex == 4) //if before paddle
-                childBall.Draw(g);           
+                childBall.Draw(g);
 
             fillArrays();  //reset the transformed arrays
         }

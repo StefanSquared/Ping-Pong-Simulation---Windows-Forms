@@ -23,7 +23,7 @@ namespace PingPong
         public Point screenCenter;
         public Form1 parentForm;
         public bool tapTwice;
-        public int zIndex; // 0: pozadi table/enemy paddle, 1: pomegju e-paddle i net, 2: pomegju net i player-paddle, 3: pred player-paddle
+        public int zIndex;  // see findZIndex()
         public int prevZIndex;
 
         Random r = new Random();
@@ -62,19 +62,19 @@ namespace PingPong
             double hypotenuse = Math.Sqrt(diff);
             double adjacent = screenCenter.X - playerPaddle.center.X;
             double cosine = adjacent / hypotenuse;
-            angle = Math.PI / 2;// + cosine*Math.PI/4;
+            angle = Math.PI / 2;  // + cosine*Math.PI/4;
             if (playerPaddle.center.X > 450)
-                angle += r.NextDouble() * .2;
+                angle += r.NextDouble() * .25;
             else
-                angle -= r.NextDouble() * .2;
+                angle -= r.NextDouble() * .25;
             if (center.Y > 300)
             {
                 velocityUp = -r.Next(10) + 5;
-                velocityAngled *= 1.2;
+                velocityAngled *= 1.33;
             }
             else
                 velocityUp = r.Next(6) + 20;
-            velocityAngled *= ((1 + r.NextDouble() * .2 - 0.1) + (double)(playerPaddle.power / 20));
+            velocityAngled *= ((1 + r.NextDouble() * .3 - 0.15) + (double)(playerPaddle.power / 15));
             SoundFX.Pong();
 
         }
@@ -92,13 +92,13 @@ namespace PingPong
         {
             angle = -Math.PI / 2;
             if (opponentPaddle.center.X < 450)
-                angle += r.NextDouble() * .2;
+                angle += r.NextDouble() * .25;
             else
-                angle -= r.NextDouble() * .2;
+                angle -= r.NextDouble() * .25;
             if (center.Y > 300)
             {
                 velocityUp = -r.Next(10)+5;
-                velocityAngled *= 1.2;
+                velocityAngled *= 1.33;
             }
             else
                 velocityUp = r.Next(6) + 20;
@@ -170,7 +170,8 @@ namespace PingPong
             else if (center.Z > parentTable.originalArrayOutline[0].Z) return 1; //after table
             else if (center.Z > 770) return 2; //after net
             else if (center.Z > parentTable.originalArrayOutline[2].Z) return 3; // before net
-            else return 4;  // before paddle
+            else if (center.Z > -500) return 4; //before paddle
+            return 5;  // behind camera, don't draw
         }
 
         private void BounceUp()

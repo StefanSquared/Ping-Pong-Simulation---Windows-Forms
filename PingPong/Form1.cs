@@ -33,6 +33,20 @@ namespace PingPong
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if(cbStereo.Checked)
+            {
+                // TODO: Need to rotate the cameras towards the center a bit
+                if (Camera.leftEyeView)
+                {
+                    Camera.leftEyeView = false;
+                    Camera.cameraMatrix = new Matrix3D(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 445, -300, -500, 1);
+                }
+                else
+                {
+                    Camera.leftEyeView = true;
+                    Camera.cameraMatrix = new Matrix3D(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 455, -300, -500, 1);
+                }
+            }
             ball.Move();
             tsBallInfo.Text = string.Format("ball position: {0:0.00}, {1:0.0}, {2:0.0}", ball.center.X, ball.center.Y, ball.center.Z);
             opponentPaddle.Move(ball);
@@ -59,9 +73,9 @@ namespace PingPong
             //generate objects
             table = new Table();
             r = new Random();
-            double vAngled = r.Next(10) + 17;
-            double vUp = r.Next(5) + 10;
-            double bAngle = Math.PI / 2 + r.NextDouble() * 0.2;
+            double vAngled = r.Next(15) + 20;
+            double vUp = r.Next(10) + 10;
+            double bAngle = Math.PI / 2 + r.NextDouble() * 0.25;
             Point3D startPoint = new Point3D(450, 300, 400);
             ball = new Ball(this, table, startPoint, 10, vAngled, vUp, bAngle);
             paddle = new PlayerPaddle();

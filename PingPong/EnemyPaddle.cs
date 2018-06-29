@@ -72,8 +72,8 @@ namespace PingPong
             if (!b.falling && b.angle > 0)
             {
                 Point3D oldCenter = center;
-                center.X = (b.center.X*5 + center.X*6) / 11;
-                center.Y = (b.center.Y*5 + center.Y*6) / 11;
+                center.X = (b.center.X*5 + center.X*9) / 14;
+                center.Y = (b.center.Y*5 + center.Y*9) / 14;
                 if (center.Y < 20)
                     center.Y = 20;
                 if (center.Y > 400)

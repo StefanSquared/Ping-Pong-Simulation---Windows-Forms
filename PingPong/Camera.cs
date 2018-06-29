@@ -10,16 +10,8 @@ namespace PingPong
 {
     public class Camera
     {
-        public static PerspectiveCamera getPerspectiveCamera()
-        {
-            Point3D center = new Point3D(450,200,1550);
-            Vector3D look = new Vector3D(0, -200, 830);
-            Vector3D up = new Vector3D(0, 1, 0);
-            PerspectiveCamera p = new PerspectiveCamera(center, look, up, 180);
-            return p;
-        }
-
-        public static Matrix3D cameraMatrix = new Matrix3D (-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 450, -300, -500, 1);
+        public static Matrix3D cameraMatrix = new Matrix3D(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 450, -300, -500, 1);
+        public static bool leftEyeView = true;
 
         public static Point[] Transform(Point3D[] inArray)
         {
